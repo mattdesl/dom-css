@@ -59,4 +59,6 @@ padding, margin, perspective
 
 ## License
 
+Special thanks to Paul Irish's gist for the prefix detection (now part of Modernizr). 
+
 MIT, see [LICENSE.md](http://github.com/mattdesl/dom-css/blob/master/LICENSE.md) for details.
