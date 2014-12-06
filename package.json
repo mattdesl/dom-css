@@ -13,10 +13,10 @@
     "to-camel-case": "^0.2.1"
   },
   "devDependencies": {
-    "prova": "^2.1.1"
+    "beefy": "^2.1.1"
   },
   "scripts": {
-    "test": "node test.js"
+    "test": "beefy test.js --open"
   },
   "keywords": [
     "dom",
