@@ -1,0 +1,39 @@
+{
+  "name": "dom-css",
+  "version": "1.0.0",
+  "description": "fast dom CSS styling",
+  "main": "index.js",
+  "license": "MIT",
+  "author": {
+    "name": "Matt DesLauriers",
+    "email": "dave.des@gmail.com",
+    "url": "https://github.com/mattdesl"
+  },
+  "dependencies": {
+    "to-camel-case": "^0.2.1"
+  },
+  "devDependencies": {
+    "prova": "^2.1.1"
+  },
+  "scripts": {
+    "test": "node test.js"
+  },
+  "keywords": [
+    "dom",
+    "css",
+    "style",
+    "sheet",
+    "animate",
+    "element",
+    "px",
+    "pixels"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mattdesl/dom-css.git"
+  },
+  "homepage": "https://github.com/mattdesl/dom-css",
+  "bugs": {
+    "url": "https://github.com/mattdesl/dom-css/issues"
+  }
+}
