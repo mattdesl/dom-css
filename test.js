@@ -67,5 +67,7 @@ test('transforms', function(t) {
         width = div.getBoundingClientRect().width
         t.ok(width < 100, 'shrinks after 3d perspective')
     }
+
+    document.body.removeChild(div)
     t.end()
 })
