@@ -1,4 +1,4 @@
-var prefix = require('./prefix')
+var prefix = require('prefix-style')
 var toCamelCase = require('to-camel-case')
 var cache = { 'float': 'cssFloat' }
 

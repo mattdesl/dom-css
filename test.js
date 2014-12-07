@@ -1,6 +1,6 @@
 var css = require('./')
 var test = require('tape')
-var prefix = require('./prefix')
+var prefix = require('prefix-style')
 
 test('handles multiple', function(t) {
     var div = document.createElement('div')
@@ -31,20 +31,6 @@ test('handles multiple', function(t) {
     style = window.getComputedStyle(div, null)
     t.equal(style.marginTop, '20px', 'single property version works')
     t.equal(style.width, '0px', 'empty string clears style')
-    t.end()
-})
-
-test('prefix', function(t) {
-    var valid = [false,  //if browser doesn't support it
-        'transformStyle', 
-        'MozTransformStyle', 
-        'KhtmlTransformStyle', 
-        'WebkitTransformStyle', 
-        'OTransformStyle',
-        'msTransformStyle']
-
-    var result = prefix('transformStyle')
-    t.ok(valid.indexOf(result) !== -1, 'prefixes transforms')
     t.end()
 })
 
