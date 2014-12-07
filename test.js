@@ -33,3 +33,53 @@ test('handles multiple', function(t) {
     t.equal(style.width, '0px', 'empty string clears style')
     t.end()
 })
+
+test('prefix', function(t) {
+    var valid = [false,  //if browser doesn't support it
+        'transformStyle', 
+        'MozTransformStyle', 
+        'KhtmlTransformStyle', 
+        'WebkitTransformStyle', 
+        'OTransformStyle',
+        'msTransformStyle']
+
+    var result = prefix('transformStyle')
+    t.ok(valid.indexOf(result) !== -1, 'prefixes transforms')
+    t.end()
+})
+
+test('transforms', function(t) {
+    var div = document.body.appendChild(document.createElement('div'))
+    css(div, {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width: 100,
+        display: 'inline-block',
+        height: 100,
+        background: 'blue',
+        padding: 0,
+        margin: 0
+    })
+
+    //if transforms are supported
+    if (prefix('transform')) {
+        var width = div.getBoundingClientRect().width
+        t.equal(width, 100, 'starts with 100px')
+        
+        css(div, 'transform', 'translateZ(10px)')
+        width = div.getBoundingClientRect().width
+        t.equal(width, 100, 'still 100px after translateZ')
+
+        //apply the 3D effect to parent
+        css(document.body, {
+            transformStyle: 'preserve-3d',
+            perspective: 1000,
+        })
+
+        css(div, 'transform', 'rotateY(90deg) translateZ(10px)')
+        width = div.getBoundingClientRect().width
+        t.ok(width < 100, 'shrinks after 3d perspective')
+    }
+    t.end()
+})
