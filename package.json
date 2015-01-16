@@ -14,10 +14,14 @@
     "to-camel-case": "^0.2.1"
   },
   "devDependencies": {
-    "beefy": "^2.1.1"
+    "beefy": "^2.1.1",
+    "browserify": "^8.1.1",
+    "smokestack": "^3.2.0",
+    "tap-closer": "^1.0.0",
+    "tap-spec": "^2.1.2"
   },
   "scripts": {
-    "test": "beefy test.js --open"
+    "test": "browserify test.js | tap-closer | smokestack | tap-spec"
   },
   "keywords": [
     "dom",

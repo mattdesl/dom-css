@@ -31,6 +31,8 @@ test('handles multiple', function(t) {
     style = window.getComputedStyle(div, null)
     t.equal(style.marginTop, '20px', 'single property version works')
     t.equal(style.width, '0px', 'empty string clears style')
+
+    document.body.removeChild(div)
     t.end()
 })
 
@@ -67,6 +69,8 @@ test('transforms', function(t) {
         width = div.getBoundingClientRect().width
         t.ok(width < 100, 'shrinks after 3d perspective')
     }
+
+    css(div, 'left', '50%')
 
     document.body.removeChild(div)
     t.end()
