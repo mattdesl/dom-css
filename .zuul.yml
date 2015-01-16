@@ -1,0 +1,11 @@
+name: dom-css
+ui: tape
+browsers:
+  - name: firefox
+    version: 30..latest
+  - name: chrome
+    version: 32..latest
+  - name: ie
+    version: latest
+  - name: iphone
+    version: latest
