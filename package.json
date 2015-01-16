@@ -18,10 +18,13 @@
     "browserify": "^8.1.1",
     "smokestack": "^3.2.0",
     "tap-closer": "^1.0.0",
-    "tap-spec": "^2.1.2"
+    "tap-spec": "^2.1.2",
+    "tape": "^3.2.0",
+    "zuul": "^1.16.4"
   },
   "scripts": {
-    "test": "browserify test.js | tap-closer | smokestack | tap-spec"
+    "test-local": "browserify test.js | tap-closer | smokestack | tap-spec",
+    "test": "zuul -- test.js"
   },
   "keywords": [
     "dom",
