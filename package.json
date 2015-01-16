@@ -19,6 +19,7 @@
     "smokestack": "^3.2.0",
     "tap-closer": "^1.0.0",
     "tap-spec": "^2.1.2",
+    "tape": "^3.2.0",
     "zuul": "^1.16.4"
   },
   "scripts": {
