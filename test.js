@@ -25,7 +25,7 @@ test('handles multiple', function(t) {
     var prefixed = prefix('fontSmoothing')
     if (prefixed) //webkit only test
         t.equal(style[prefixed], 'none', 'hanldes prefixing')
-    
+
     css(div, 'marginTop', 20)
     css(div, 'width', '') //clears a style
     style = window.getComputedStyle(div, null)
@@ -54,7 +54,7 @@ test('transforms', function(t) {
     if (prefix('transform')) {
         var width = div.getBoundingClientRect().width
         t.equal(width, 100, 'starts with 100px')
-        
+
         css(div, 'transform', 'translateZ(10px)')
         width = div.getBoundingClientRect().width
         t.equal(width, 100, 'still 100px after translateZ')
@@ -71,6 +71,26 @@ test('transforms', function(t) {
     }
 
     css(div, 'left', '50%')
+
+    document.body.removeChild(div)
+    t.end()
+})
+
+test('computed value', function(t) {
+    var div = document.createElement('div')
+    css(div, {
+        marginTop: 10,
+        width: 20
+    })
+
+    document.body.appendChild(div)
+
+    t.deepEqual(css.get(div, 'width'), '20px', 'single value')
+    t.deepEqual(
+        css.get(div, ['width', 'marginTop']),
+        {width: '20px', marginTop: '10px'},
+        'multiple values'
+    )
 
     document.body.removeChild(div)
     t.end()
