@@ -85,8 +85,8 @@ test('get / set exports', function(t) {
 
     document.body.appendChild(div)
 
-    t.equal(css.get(div), div.style['foobarcacha'], 'handles missing props')
-    t.equal(css.get(div, undefined), div.style['foobarcacha'], 'handles missing props')
+    t.equal(css.get(div), div.style['foo-barcacha'], 'handles missing props')
+    t.equal(css.get(div, undefined), div.style['foo-barcacha'], 'handles missing props')
     t.deepEqual(css.get(div, []), {}, 'handles missing props')
 
     t.equal(css.get(div, 'width'), '20px', 'single value')
