@@ -76,19 +76,25 @@ test('transforms', function(t) {
     t.end()
 })
 
-test('computed value', function(t) {
+test('get / set exports', function(t) {
     var div = document.createElement('div')
-    css(div, {
+    css.set(div, {
         marginTop: 10,
         width: 20
     })
 
+
+
     document.body.appendChild(div)
 
-    t.deepEqual(css.get(div, 'width'), '20px', 'single value')
+    t.equal(css.get(div), div.style['foobarcacha'], 'handles missing props')
+    t.equal(css.get(div, undefined), div.style['foobarcacha'], 'handles missing props')
+    t.deepEqual(css.get(div, []), {}, 'handles missing props')
+
+    t.equal(css.get(div, 'width'), '20px', 'single value')
     t.deepEqual(
         css.get(div, ['width', 'marginTop']),
-        {width: '20px', marginTop: '10px'},
+        { width: '20px', marginTop: '10px' },
         'multiple values'
     )
 

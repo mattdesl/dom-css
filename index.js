@@ -57,14 +57,11 @@ module.exports = set
 module.exports.set = set
 
 module.exports.get = function(element, properties) {
-    if (typeof properties === 'string') {
-        return style(element, properties)
-    }
-
-    var values = {}
-    properties.forEach(function(property) {
-        values[property] = style(element, property)
-    })
-
-    return values
+    if (Array.isArray(properties))
+        return properties.reduce(function(obj, prop) {
+            obj[prop] = style(element, prop||'')
+            return obj
+        }, {})
+    else
+        return style(element, properties||'')
 }

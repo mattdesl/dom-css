@@ -25,12 +25,16 @@ css(element, {
     //some properties use 'px' by default
     left: 25, 
     top: 0,
+    marginTop: 0,
     position: 'absolute'
 })
 
-//get the computed value
-css.get(element, 'position') // >> absolute
-css.get(element, ['left', 'top']) // >> {left: '25px', top: '0px'}
+//get the current style
+css.get(element, 'position') 
+// -> 'absolute'
+
+css.get(element, ['left', 'marginTop']) 
+// -> { left: '25px', marginTop: '0px' }
 ``` 
 
 See the [special cases](#special-cases) for a list of `px`-suffixed properties (same list is used in GreenSock API).
@@ -40,12 +44,24 @@ See the [special cases](#special-cases) for a list of `px`-suffixed properties (
 [![NPM](https://nodei.co/npm/dom-css.png)](https://nodei.co/npm/dom-css/)
 
 #### `css(element, property, value)`
+#### `css.set(element, property, value)`
 
 Styles an element with the css `property` (dash or camel case) and a given value. `value` is a string, or a number to be suffixed with `'px'` (special cases, see below). 
 
 #### `css(element, styles)`
+#### `css.set(element, styles)`
 
 A shorthand for setting multiple styles, where `styles` is an object containing `property:value` pairs. 
+
+#### `css.get(element, prop)`
+
+Gets the inline style of element, where `prop` is a string (like `"borderRadius"`) or an array of strings. If an array of strings is given, an object is returned with key-value pairs representing the specified properties.
+
+```js
+css.get(div, ['width', 'height']) => { width: "20px", height: "40px" }
+```
+
+*Note:* This does not provide the *computed* style! 
 
 #### special cases
 
