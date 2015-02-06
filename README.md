@@ -27,6 +27,10 @@ css(element, {
     top: 0,
     position: 'absolute'
 })
+
+//get the computed value
+css.get(element, 'position') // >> absolute
+css.get(element, ['left', 'top']) // >> {left: '25px', top: '0px'}
 ``` 
 
 See the [special cases](#special-cases) for a list of `px`-suffixed properties (same list is used in GreenSock API).

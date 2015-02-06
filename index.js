@@ -18,9 +18,12 @@ function style(element, property, value) {
     var camel = cache[property]
     if (typeof camel === 'undefined')
         camel = detect(property)
-    
+
     //may be false if CSS prop is unsupported
-    if (camel) { 
+    if (camel) {
+        if (value === undefined)
+            return element.style[camel]
+
         if (typeof value === 'number')
             value = value + (suffixMap[camel]||'')
         element.style[camel] = value
@@ -42,10 +45,26 @@ function detect(cssProp) {
     return result
 }
 
-module.exports = function() {
+function set() {
     'use strict';
     if (arguments.length === 2) {
         each(arguments[0], arguments[1])
     } else
         style(arguments[0], arguments[1], arguments[2])
+}
+
+module.exports = set
+module.exports.set = set
+
+module.exports.get = function(element, properties) {
+    if (typeof properties === 'string') {
+        return style(element, properties)
+    }
+
+    var values = {}
+    properties.forEach(function(property) {
+        values[property] = style(element, property)
+    })
+
+    return values
 }
