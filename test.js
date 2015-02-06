@@ -83,8 +83,6 @@ test('get / set exports', function(t) {
         width: 20
     })
 
-
-
     document.body.appendChild(div)
 
     t.equal(css.get(div), div.style['foobarcacha'], 'handles missing props')
