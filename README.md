@@ -1,6 +1,6 @@
 # dom-css
 
-[![Build Status](https://travis-ci.org/mattdesl/dom-css.svg?branch=master)](https://travis-ci.org/mattdesl/dom-css) [![stable](http://badges.github.io/stability-badges/dist/stable.svg)](http://github.com/badges/stability-badges)
+[![stable](http://badges.github.io/stability-badges/dist/stable.svg)](http://github.com/badges/stability-badges)
 
 Small module for fast and reliable DOM styling. 
 
