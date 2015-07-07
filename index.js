@@ -46,7 +46,6 @@ function detect(cssProp) {
 }
 
 function set() {
-    'use strict';
     if (arguments.length === 2) {
         each(arguments[0], arguments[1])
     } else
