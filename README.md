@@ -4,9 +4,9 @@
 
 Small module for fast and reliable DOM styling. 
 
-- detects prefixes as necessary, cached for performance
-- converts numbers to `px` strings for common properties
-- normalizes for camel and dash case
+- normalizes for camel and dash case (see [to-camel-case](https://www.npmjs.com/package/to-camel-case))
+- detects vendor prefixes as necessary, cached for performance (see [prefix-style](https://github.com/mattdesl/prefix-style))
+- converts numbers to `px` strings for common properties (see [add-px-to-style](https://www.npmjs.com/package/add-px-to-style))
 
 ```js
 var css = require('dom-css')
@@ -19,14 +19,17 @@ css(element, 'font-smoothing', 'none')
 
 //set multiple styles
 css(element, {
-    //can be camel or dash case
-    'background-color': 'blue',
+  // can be camel or dash case
+  'background-color': 'blue',
 
-    //some properties use 'px' by default
-    left: 25, 
-    top: 0,
-    marginTop: 0,
-    position: 'absolute'
+  // you can use numbers to auto-"px"
+  left: 25, 
+  top: 0,
+  marginTop: 0,
+  position: 'absolute',
+  
+  // certain props will not have "px" added
+  opacity: 0.5
 })
 
 //get the current style
@@ -37,7 +40,7 @@ css.get(element, ['left', 'marginTop'])
 // -> { left: '25px', marginTop: '0px' }
 ``` 
 
-See the [special cases](#special-cases) for a list of `px`-suffixed properties (same list is used in GreenSock API).
+**Note:** This module does not *compute* an element's style, it only fetches the currently set inline style.
 
 ## Usage
 
@@ -58,24 +61,15 @@ A shorthand for setting multiple styles, where `styles` is an object containing 
 Gets the inline style of element, where `prop` is a string (like `"borderRadius"`) or an array of strings. If an array of strings is given, an object is returned with key-value pairs representing the specified properties.
 
 ```js
-css.get(div, ['width', 'height']) => { width: "20px", height: "40px" }
+css.get(div, ['width', 'height'])
+//=> { width: '20px', height: '40px' }
 ```
 
 *Note:* This does not provide the *computed* style! 
 
-#### special cases
+#### auto px
 
-The following properties are suffixed with `'px'` when their value is specified as a number.
-
-```
-top, right, bottom, left, 
-width, height, fontSize, 
-paddingLeft, paddingRight, 
-paddingTop, paddingBottom, 
-marginLeft, marginRight, 
-marginTop, marginBottom, 
-padding, margin, perspective
-```
+If a number is specified, the value will have `"px"` added to it, *unless* it is a special unitless property like `'opacity'` and `'zIndex'`. See the full list in [add-px-to-style](https://www.npmjs.com/package/add-px-to-style) (sourced from React).
 
 ## License
 
