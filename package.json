@@ -10,6 +10,7 @@
     "url": "https://github.com/mattdesl"
   },
   "dependencies": {
+    "add-px-to-style": "^1.0.0",
     "prefix-style": "^1.0.0",
     "to-camel-case": "^0.2.1"
   },
