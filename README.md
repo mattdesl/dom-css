@@ -40,7 +40,7 @@ css.get(element, ['left', 'marginTop'])
 // -> { left: '25px', marginTop: '0px' }
 ``` 
 
-**Note:** This module does not *compute* an element's style, it only fetches the currently set inline style.
+**Note:** The `get()` method does not *compute* an element's style, it only fetches the currently set inline style.
 
 ## Usage
 
@@ -65,11 +65,19 @@ css.get(div, ['width', 'height'])
 //=> { width: '20px', height: '40px' }
 ```
 
-*Note:* This does not provide the *computed* style! 
+This does not provide the *computed* style, only the current inline style.
 
 #### auto px
 
 If a number is specified, the value will have `"px"` added to it, *unless* it is a special unitless property like `'opacity'` and `'zIndex'`. See the full list in [add-px-to-style](https://www.npmjs.com/package/add-px-to-style) (sourced from React).
+
+## Changelog
+
+- `2.x`
+  - formatted to [standard](https://npmjs.com/package/standard) code style
+  - updates to latest `prefix-style`, since `'Khtml'` prefix has long been obsolete
+  - now all properties are suffixed with "px" except a few like `opacity`, `zIndex`, etc. The list is sourced from React and maintained in another module.
+- `1.x` - initial version which had a list of properties to be suffixed with "px"
 
 ## License
 
