@@ -1,18 +1,7 @@
 var prefix = require('prefix-style')
 var toCamelCase = require('to-camel-case')
 var cache = { 'float': 'cssFloat' }
-
-var suffixMap = {}
-;['top','right','bottom','left',
-    'width','height','fontSize',
-    'paddingLeft','paddingRight',
-    'paddingTop','paddingBottom',
-    'marginLeft','marginRight',
-    'marginTop','marginBottom',
-    'padding','margin','perspective'
-].forEach(function(prop) {
-    suffixMap[prop] = 'px'
-})
+var addPxToStyle = require('add-px-to-style')
 
 function style(element, property, value) {
     var camel = cache[property]
@@ -24,9 +13,7 @@ function style(element, property, value) {
         if (value === undefined)
             return element.style[camel]
 
-        if (typeof value === 'number')
-            value = value + (suffixMap[camel]||'')
-        element.style[camel] = value
+        element.style[camel] = addPxToStyle(camel, value);
     }
 }
 
