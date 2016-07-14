@@ -10,9 +10,9 @@
     "url": "https://github.com/mattdesl"
   },
   "dependencies": {
-    "add-px-to-style": "^1.0.0",
-    "prefix-style": "^2.0.1",
-    "to-camel-case": "^0.2.1"
+    "add-px-to-style": "1.0.0",
+    "prefix-style": "2.0.1",
+    "to-camel-case": "1.0.0"
   },
   "devDependencies": {
     "browserify": "^8.1.1",
