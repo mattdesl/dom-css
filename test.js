@@ -104,3 +104,28 @@ test('get / set exports', function (t) {
   document.body.removeChild(div)
   t.end()
 })
+
+test('string argument', function (t) {
+  var div = document.createElement('div')
+
+  css.set(div, `
+    margin-top: 10px;
+    position: absolute;
+  `)
+
+  document.body.appendChild(div)
+
+  var style = window.getComputedStyle(div)
+  t.equal(style.marginTop, '10px')
+  t.equal(style.position, 'absolute')
+
+  // empty string clears style
+  css(div, '')
+
+  style = window.getComputedStyle(div, null)
+  t.equal(style.marginTop, '0px', 'single property version works')
+  t.equal(style.position, 'static', 'empty string clears style')
+
+  document.body.removeChild(div)
+  t.end()
+})

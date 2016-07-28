@@ -36,7 +36,11 @@ function detect (cssProp) {
 
 function set () {
   if (arguments.length === 2) {
-    each(arguments[0], arguments[1])
+    if (typeof arguments[1] === 'string') {
+      arguments[0].style.cssText = arguments[1]
+    } else {
+      each(arguments[0], arguments[1])
+    }
   } else {
     style(arguments[0], arguments[1], arguments[2])
   }
