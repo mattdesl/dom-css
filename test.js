@@ -108,10 +108,12 @@ test('get / set exports', function (t) {
 test('string argument', function (t) {
   var div = document.createElement('div')
 
-  css.set(div, `
-    margin-top: 10px;
-    position: absolute;
-  `)
+  // in new versions of Node/Browser this might be
+  // a template string :)
+  css.set(div, [
+    'margin-top: 10px;',
+    'position: absolute;'
+  ].join('\n'))
 
   document.body.appendChild(div)
 
