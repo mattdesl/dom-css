@@ -36,14 +36,27 @@ function detect (cssProp) {
 
 function set () {
   if (arguments.length === 2) {
-    if (typeof arguments[1] === 'string') {
-      arguments[0].style.cssText = arguments[1]
-    } else {
-      each(arguments[0], arguments[1])
+    var props = arguments[1]
+    if (typeof props === 'string') {
+      props = parse(props)
     }
+    each(arguments[0], props)
   } else {
     style(arguments[0], arguments[1], arguments[2])
   }
+}
+
+function parse (str) {
+  var list = str.split(';')
+  var row
+  var name
+  var result = {}
+  for (var i = 0; i < list.length; i++) {
+    row = list[i]
+    name = row.slice(0, row.indexOf(':'))
+    result[name] = row.slice(name.length + 1).trim()
+  }
+  return result
 }
 
 module.exports = set
