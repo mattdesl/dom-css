@@ -47,7 +47,7 @@ function set () {
 }
 
 function parse (str) {
-  var list = str.split(';')
+  var list = str.split(';').filter(Boolean)
   var row
   var name
   var result = {}

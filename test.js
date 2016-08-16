@@ -129,7 +129,7 @@ test('string argument', function (t) {
   t.equal(style.position, 'absolute')
 
   // new string appends/replaces properties
-  css(div, 'margin-bottom: 20px; position: relative')
+  css(div, 'margin-bottom: 20px; position: relative;')
 
   style = window.getComputedStyle(div, null)
   t.equal(style.marginBottom, '20px')
