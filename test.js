@@ -121,12 +121,19 @@ test('string argument', function (t) {
   t.equal(style.marginTop, '10px')
   t.equal(style.position, 'absolute')
 
-  // empty string clears style
+  // empty string does not remove properties
   css(div, '')
 
   style = window.getComputedStyle(div, null)
-  t.equal(style.marginTop, '0px', 'single property version works')
-  t.equal(style.position, 'static', 'empty string clears style')
+  t.equal(style.marginTop, '10px')
+  t.equal(style.position, 'absolute')
+
+  // new string appends/replaces properties
+  css(div, 'margin-bottom: 20px; position: relative;')
+
+  style = window.getComputedStyle(div, null)
+  t.equal(style.marginBottom, '20px')
+  t.equal(style.position, 'relative')
 
   document.body.removeChild(div)
   t.end()
