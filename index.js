@@ -14,8 +14,11 @@ function style (element, property, value) {
     if (value === undefined) {
       return element.style[camel]
     }
-
-    element.style[camel] = addPxToStyle(camel, value)
+    try{
+      element.style[camel] = addPxToStyle(camel, value)
+    }catch(e){
+      //if value is invalid : IE8 will throw an exception,other browser just ignore it and do nothing
+    }
   }
 }
 
